@@ -1,28 +1,26 @@
 <?php
 
-namespace Core\Router;
+namespace Dark\Router;
 
 class Router extends BaseRouter
 {
     public function get(string $url, array $params)
     {
-        $controller = $params[0] ?? null;
-        $action = $params[1] ?? null;
-        return $this->request($url, $controller, $action);
+        return $this->setControllerWithAction($url, $params);
     }
 
     public function post(string $url, array $params)
     {
-
+        return $this->setControllerWithAction($url, $params);
     }
 
     public function put(string $url, array $params)
     {
-
+        return $this->setControllerWithAction($url, $params);
     }
 
     public function delete(string $url, array $params)
     {
-
+        return $this->setControllerWithAction($url, $params);
     }
 }

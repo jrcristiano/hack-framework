@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\DI;
+namespace Dark\ServiceContainer;
 
-use Core\Collection\Collection;
+use Dark\Collection\Collection;
 use ReflectionClass;
 use ReflectionMethod;
 
@@ -15,7 +15,7 @@ class Resolver
         $ref = new \ReflectionClass($class);
 
         $instance = $this->instance($ref);
-        
+
         if (!$method) {
             return $instance;
         }
@@ -41,7 +41,7 @@ class Resolver
         return $reflectionClass->newInstanceArgs($parameters);
     }
 
-    public function parameters(ReflectionMethod $reflectionMethod)
+    public function parameters(ReflectionMethod $reflectionMethod):array
     {
         $parameters = [];
         foreach ($reflectionMethod->getParameters() as $param) {
@@ -54,7 +54,7 @@ class Resolver
                 continue;
             }
 
-            if ($param->getType() && !$offsetExists) {
+            if ($param->getType()) {
                 $paramName = $param->getType()->getName();
                 $parameters[] = $this->handler($paramName);
                 continue;   

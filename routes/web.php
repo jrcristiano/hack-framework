@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProductController;
-use Core\Router\Router;
+use App\Http\Controllers\UserController;
+use Dark\Router\Router;
 
 $router = new Router;
 
-$router->get('/produtos', [ProductController::class, 'index']);
+$router->get('/users', [UserController::class, 'index']);

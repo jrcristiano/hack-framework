@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Collection;
+namespace Dark\Collection;
 
 trait Collection
 {

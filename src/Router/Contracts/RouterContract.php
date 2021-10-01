@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Router\Contracts;
+namespace Dark\Router\Contracts;
 
 interface RouterContract
 {
@@ -8,5 +8,4 @@ interface RouterContract
     public function post(string $url, array $params);
     public function put(string $url, array $params);
     public function delete(string $url, array $params);
-    
 }

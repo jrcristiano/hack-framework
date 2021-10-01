@@ -1,16 +1,15 @@
 <?php
 
-namespace Core\Router;
+namespace Dark\Router;
 
-use Core\DI\Resolver;
-use Core\Router\Contracts\RouterContract;
+use Dark\ServiceContainer\Resolver;
+use Dark\Router\Contracts\RouterContract;
 
 abstract class BaseRouter implements RouterContract
 {
     protected function request($url, $controller, $action)
     {
-        $path = $_SERVER['PHP_SELF'];
-        $path = str_replace('/index.php', '', $path);
+        $path = $_SERVER['REQUEST_URI'];
 
         if (strlen($path) > 1) {
             $path = rtrim($path, '/');
@@ -20,5 +19,12 @@ abstract class BaseRouter implements RouterContract
             $resolver = new Resolver;
             return $resolver->handler($controller, $action);
         }
+    }
+
+    protected function setControllerWithAction(string $url, array $params)
+    {
+        $controller = $params[0] ?? null;
+        $action = $params[1] ?? null;
+        return $this->request($url, $controller, $action);
     }
 }
