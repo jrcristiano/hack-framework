@@ -1,6 +1,6 @@
 <?php
 
-namespace Dark;
+namespace Dark\Http;
 
 class Request
 {   
